@@ -21,7 +21,7 @@ class IndexController extends \Controller
 		$examples = [];
 		foreach ($files as $file)
 		{
-			$name = str_replace('.blade.php', '', $file->getFilename());
+			$name = str_replace(['.blade.php', '.php'], '', $file->getFilename());
 			$examples[$name] = file_get_contents($file->getPathname());
 		}
 		return $examples;

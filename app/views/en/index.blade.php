@@ -3,7 +3,7 @@
 @section('content')
 	<div class="jumbotron">
 		<p class="lead">
-			<b>SleepingOwl BladeExtended</b> is a simple library, that adds <code>bd-foreach</code>, <code>bd-inner-foreach</code>, <code>bd-if</code> and <code>bd-class</code> attribute directives support to your blade templates.
+			<b>SleepingOwl BladeExtended</b> is a simple library, that adds <code>bd-foreach</code>, <code>bd-inner-foreach</code>, <code>bd-if</code>, <code>bd-attr-&lt;name&gt;</code> and <code>bd-class</code> attribute directives support to your blade templates.
 		</p>
 	</div>
 
@@ -57,5 +57,46 @@
 	<h3>bd-class</h3>
 	<p>Use it if you want to dynamically add classes to the element:</p>
 	<pre><code class="language-html">{{{ $examples['bd-class'] }}}</code></pre>
+
+	<h3>bd-attr-&lt;attribute name&gt;</h3>
+	<p>Use it if you want to dynamically add attribute to the element:</p>
+	<pre><code class="language-html">{{{ $examples['bd-attr'] }}}</code></pre>
+
+	<div class="page-header">
+		<div id="extensions" class="fix-navbar-fixed"></div>
+		<h2>Extensions</h2>
+	</div>
+	<p>You can register your own extensions. Create file <code>blade_extensions.php</code> in your <code>app/</code> folder
+		and write any extensions you want. Require this file from your <code>app/start/global.php</code>:</p>
+	<pre><code class="language-php">{{{ $examples['extension-require'] }}}</code></pre>
+	<p>Example of simple extension:</p>
+	<pre><code class="language-php">{{{ $examples['extension-example'] }}}</code></pre>
+	<p>This extension will replace every <code>bd-my="$anything"</code> attribute with <code>id="{{'{'.'{$anything}'.'}'}}"</code>.</p>
+	<h4>How to Create Your Own</h4>
+	<p><strong>Important:</strong> don't forget to clear compiled views after changes.</p>
+	<p><code>BladeExtended::extend</code> expect 2 arguments:</p>
+	<ol>
+		<li>attribute name (or regexp). <i>e.g.: <code>'bd-my'</code>, <code>'bd-test-(?&lt;argument&gt;[a-z]+)'</code></i></li>
+		<li>closure, that expects 2 parameters:
+			<ol>
+				<li><code>SleepingOwl\BladeExtended\BladeExtended</code> instance</li>
+				<li>
+					<code>&$finded</code> array:
+					<pre><code class="language-php">{{{ $examples['extension-finded'] }}}</code></pre>
+				</li>
+			</ol>
+		</li>
+	</ol>
+	<h4>BladeExtended Methods to Use</h4>
+	<p>There are several methods you can use to alter result html:</p>
+	<ul>
+		<li><code>insertContent($position, $insertString)</code> &mdash; insert string at specific position</li>
+		<li><code>removeContent($from, $to)</code> &mdash; remove content from <code>$from</code> position to <code>$to</code> position</li>
+		<li><code>replaceAttribute($attribute, $replacement, $start, $end)</code> &mdash; replace whole attribute with <code>$replacement</code> in part of html from <code>$start</code> to <code>$end</code></li>
+		<li><code>deleteAttribute($attribute, $start, $end)</code> &mdash; remove attribute in part of html from <code>$start</code> to <code>$end</code></li>
+		<li><code>wrapOuterContent($finded, $before, $after)</code> &mdash; wrap whole tag with <code>$before</code> and <code>$after</code></li>
+		<li><code>wrapInnerContent($finded, $before, $after)</code> &mdash; wrap tag content with <code>$before</code> and <code>$after</code></li>
+		<li><code>parseShortSyntax($value)</code> &mdash; parse short syntax from <code>$var ? 'value'</code> to <code>$var ? 'value' : NULL</code></li>
+	</ul>
 
 @stop

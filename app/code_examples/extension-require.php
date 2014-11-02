@@ -1,0 +1,1 @@
+require app_path().'/blade_extensions.php';
