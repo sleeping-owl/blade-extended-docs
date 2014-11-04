@@ -12,7 +12,7 @@
 	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<a id="top" class="navbar-brand navbar-brand-active" href="{{ route('index', $lang) }}">SleepingOwl
+				<a id="top" class="navbar-brand navbar-brand-active" bd-attr-href="route('index', $lang)">SleepingOwl
 					BladeExtended</a>
 			</div>
 			<ul class="nav navbar-nav" bd-include="$lang . '.menu'"></ul>
@@ -30,6 +30,5 @@
 	{{ HTML::script('js/bootstrap.min.js') }}
 	{{ HTML::script('js/highlight.min.js') }}
 	{{ HTML::script('js/main.js') }}
-	<script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

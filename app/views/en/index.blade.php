@@ -1,10 +1,10 @@
 @extends('_layout')
 
-@section('content')
+<div bd-unwrap bd-section="'content'">
 	<div class="jumbotron">
 		<p class="lead">
 			<b>SleepingOwl BladeExtended</b> is a simple library, that adds control directives attributes to your blade templates (<code>bd-foreach</code>, <code>bd-inner-foreach</code>, <code>bd-if</code>, <code>bd-attr-&lt;name&gt;</code>, <code>bd-class</code> and other).
-			<p><a class="btn btn-primary btn-lg" role="button" href="{{ route('demo') }}">Show Demo</a></p>
+			<p><a class="btn btn-primary btn-lg" role="button" href="{{ route('demo', $lang) }}">Show Demo</a></p>
 		</p>
 	</div>
 
@@ -70,6 +70,10 @@
 	<p>This directive adds <code>{{'@' . 'include' }}()</code> content inside your tag:</p>
 	<pre><code class="language-html">{{{ $examples['bd-include'] }}}</code></pre>
 
+	<h3>bd-section</h3>
+	<p>This directive wraps tag with <code>{{ '@' . 'section' }}()</code> and <code>{{ '@' . 'stop' }}</code>:</p>
+	<pre><code class="language-html">{{{ $examples['bd-section'] }}}</code></pre>
+
 	<h3>bd-unwrap</h3>
 	<p>Use this directive to unwrap tag (replace entire tag with it content):</p>
 	<pre><code class="language-html">{{{ $examples['bd-unwrap'] }}}</code></pre>
@@ -111,5 +115,4 @@
 		<li><code>wrapInnerContent($finded, $before, $after)</code> &mdash; wrap tag content with <code>$before</code> and <code>$after</code></li>
 		<li><code>parseShortSyntax($value)</code> &mdash; parse short syntax from <code>$var ? 'value'</code> to <code>$var ? 'value' : NULL</code></li>
 	</ul>
-
-@stop
+</div>

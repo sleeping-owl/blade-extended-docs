@@ -1,9 +1,10 @@
 @extends('_layout')
 
-@section('content')
+<div bd-unwrap bd-section="'content'">
 	<div class="jumbotron">
 		<p class="lead">
-			<b>SleepingOwl BladeExtended</b> &mdash; небольшая библиотека, добавляющая поддержку директив в ваши Blade шаблоны (<code>bd-foreach</code>, <code>bd-inner-foreach</code>, <code>bd-if</code>, <code>bd-attr-&lt;name&gt;</code>, <code>bd-class</code> и другие).
+			<b>SleepingOwl BladeExtended</b> &mdash; небольшая библиотека, добавляющая поддержку управляющих директив в ваши Blade шаблоны (<code>bd-foreach</code>, <code>bd-inner-foreach</code>, <code>bd-if</code>, <code>bd-attr-&lt;name&gt;</code>, <code>bd-class</code> и другие).
+			<p><a class="btn btn-primary btn-lg" role="button" href="{{ route('demo', $lang) }}">Посмотреть демо</a></p>
 		</p>
 	</div>
 
@@ -69,6 +70,10 @@
 	<p>Эта директива добавляет <code>{{'@' . 'include' }}()</code> в содержимое тэга:</p>
 	<pre><code class="language-html">{{{ $examples['bd-include'] }}}</code></pre>
 
+	<h3>bd-section</h3>
+	<p>Эта директива обрамляет тэг с помощью <code>{{ '@' . 'section' }}()</code> и <code>{{ '@' . 'stop' }}</code>:</p>
+	<pre><code class="language-html">{{{ $examples['bd-section'] }}}</code></pre>
+
 	<h3>bd-unwrap</h3>
 	<p>Используйте эту директиву для замены тэга его содержимым (может быть полезно использование совместно с bd-yield или bd-include):</p>
 	<pre><code class="language-html">{{{ $examples['bd-unwrap'] }}}</code></pre>
@@ -111,5 +116,4 @@
 		<li><code>wrapInnerContent($finded, $before, $after)</code> &mdash; обрамить содержимое тэга, используя <code>$before</code> и <code>$after</code></li>
 		<li><code>parseShortSyntax($value)</code> &mdash; привести короткий синтаксис <code>$var ? 'value'</code> к виду <code>$var ? 'value' : NULL</code></li>
 	</ul>
-
-@stop
+</div>

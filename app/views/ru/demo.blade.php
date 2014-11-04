@@ -1,6 +1,6 @@
 @extends('_layout')
 
-@section('content')
+<div bd-unwrap bd-section="'content'">
 	<div class="jumbotron">
 		<p>Введите blade-extended шаблон и посмотрите blade шаблон, который будет сгенерирован.</p>
 	</div>
@@ -21,4 +21,4 @@
 			<div><pre><code class="demo-result"></code></pre></div>
 		</div>
 	</div>
-@stop
+</div>

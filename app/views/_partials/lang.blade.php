@@ -1,1 +1,1 @@
-<li {{ ($lang === $locale) ? 'class="active"' : '' }}><a href="{{{ route('index', $locale) }}}">{{{ $label }}}</a></li>
+<li bd-class="$lang === $locale ? 'active'"><a bd-attr-href="route('index', $locale)">{{{ $label }}}</a></li>
