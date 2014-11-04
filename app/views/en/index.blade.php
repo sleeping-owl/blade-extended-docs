@@ -3,7 +3,8 @@
 @section('content')
 	<div class="jumbotron">
 		<p class="lead">
-			<b>SleepingOwl BladeExtended</b> is a simple library, that adds <code>bd-foreach</code>, <code>bd-inner-foreach</code>, <code>bd-if</code>, <code>bd-attr-&lt;name&gt;</code> and <code>bd-class</code> attribute directives support to your blade templates.
+			<b>SleepingOwl BladeExtended</b> is a simple library, that adds control directives attributes to your blade templates (<code>bd-foreach</code>, <code>bd-inner-foreach</code>, <code>bd-if</code>, <code>bd-attr-&lt;name&gt;</code>, <code>bd-class</code> and other).
+			<p><a class="btn btn-primary btn-lg" role="button" href="{{ route('demo') }}">Show Demo</a></p>
 		</p>
 	</div>
 
@@ -11,7 +12,6 @@
 		<div id="overview" class="fix-navbar-fixed"></div>
 		<h2>Overview</h2>
 	</div>
-	<p>
 	<h4>Create multiple `li` elements, but ignore item with name "_dev"</h4>
 	<pre><code class="language-html">{{{ $examples['overview1'] }}}</code></pre>
 	<h4>Using bd-inner-foreach you can create multiple element for each array item</h4>
@@ -62,6 +62,18 @@
 	<p>Use it if you want to dynamically add attribute to the element:</p>
 	<pre><code class="language-html">{{{ $examples['bd-attr'] }}}</code></pre>
 
+	<h3>bd-yield</h3>
+	<p>This directive adds <code>{{'@' . 'yield' }}()</code> content inside your tag:</p>
+	<pre><code class="language-html">{{{ $examples['bd-yield'] }}}</code></pre>
+
+	<h3>bd-include</h3>
+	<p>This directive adds <code>{{'@' . 'include' }}()</code> content inside your tag:</p>
+	<pre><code class="language-html">{{{ $examples['bd-include'] }}}</code></pre>
+
+	<h3>bd-unwrap</h3>
+	<p>Use this directive to unwrap tag (replace entire tag with it content):</p>
+	<pre><code class="language-html">{{{ $examples['bd-unwrap'] }}}</code></pre>
+
 	<div class="page-header">
 		<div id="extensions" class="fix-navbar-fixed"></div>
 		<h2>Extensions</h2>
@@ -92,6 +104,7 @@
 	<ul>
 		<li><code>insertContent($position, $insertString)</code> &mdash; insert string at specific position</li>
 		<li><code>removeContent($from, $to)</code> &mdash; remove content from <code>$from</code> position to <code>$to</code> position</li>
+		<li><code>replaceContent($from, $to, $string)</code> &mdash; replace content from <code>$from</code> position to <code>$to</code> position with <code>$string</code></li>
 		<li><code>replaceAttribute($attribute, $replacement, $start, $end)</code> &mdash; replace whole attribute with <code>$replacement</code> in part of html from <code>$start</code> to <code>$end</code></li>
 		<li><code>deleteAttribute($attribute, $start, $end)</code> &mdash; remove attribute in part of html from <code>$start</code> to <code>$end</code></li>
 		<li><code>wrapOuterContent($finded, $before, $after)</code> &mdash; wrap whole tag with <code>$before</code> and <code>$after</code></li>

@@ -71,3 +71,17 @@ body {
 .navbar-right .dropdown-menu {
 	min-width: 0;
 }
+
+.demo-source {
+	height: 500px !important;
+}
+
+.demo-reload {
+	margin-top: 300px;
+	color: #333333;
+	cursor: pointer;
+}
+
+.demo-reload:hover {
+	color: #777;
+}

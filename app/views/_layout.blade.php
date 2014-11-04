@@ -15,16 +15,12 @@
 				<a id="top" class="navbar-brand navbar-brand-active" href="{{ route('index', $lang) }}">SleepingOwl
 					BladeExtended</a>
 			</div>
-			<ul class="nav navbar-nav">
-				@include($lang . '.menu')
-			</ul>
-			@include('_partials.lang_control')
+			<ul class="nav navbar-nav" bd-include="$lang . '.menu'"></ul>
+			<div bd-include="'_partials.lang_control'" bd-unwrap></div>
 		</div>
 	</div>
 
-	<div class="container">
-		@yield('content')
-	</div>
+	<div class="container" bd-yield="'content'"></div>
 
 	<div class="well container footer text-right">
 		&copy; 2014{{ (date('Y') != 2014) ? '&mdash;' . date('Y') : '' }} <a href="mailto:owl.sleeping@yahoo.com">Sleeping Owl</a>

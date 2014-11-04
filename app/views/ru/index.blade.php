@@ -3,7 +3,7 @@
 @section('content')
 	<div class="jumbotron">
 		<p class="lead">
-			<b>SleepingOwl BladeExtended</b> &mdash; небольшая библиотека, добавляющая поддержку директив <code>bd-foreach</code>, <code>bd-inner-foreach</code>, <code>bd-if</code>, <code>bd-attr-&lt;name&gt;</code> и <code>bd-class</code> в ваши Blade шаблоны.
+			<b>SleepingOwl BladeExtended</b> &mdash; небольшая библиотека, добавляющая поддержку директив в ваши Blade шаблоны (<code>bd-foreach</code>, <code>bd-inner-foreach</code>, <code>bd-if</code>, <code>bd-attr-&lt;name&gt;</code>, <code>bd-class</code> и другие).
 		</p>
 	</div>
 
@@ -11,7 +11,6 @@
 		<div id="overview" class="fix-navbar-fixed"></div>
 		<h2>Обзор</h2>
 	</div>
-	<p>
 	<h4>Создание нескольких элементов `li`, игнорируя элемент с названием "_dev"</h4>
 	<pre><code class="language-html">{{{ $examples['overview1'] }}}</code></pre>
 	<h4>Используя bd-inner-foreach вы можете создавать несколько элементов для каждой записи массива</h4>
@@ -62,6 +61,18 @@
 	<p>Используется для динамического добавления аттрибутов элементу:</p>
 	<pre><code class="language-html">{{{ $examples['bd-attr-ru'] }}}</code></pre>
 
+	<h3>bd-yield</h3>
+	<p>Эта директива добавляет <code>{{'@' . 'yield' }}()</code> в содержимое тэга:</p>
+	<pre><code class="language-html">{{{ $examples['bd-yield'] }}}</code></pre>
+
+	<h3>bd-include</h3>
+	<p>Эта директива добавляет <code>{{'@' . 'include' }}()</code> в содержимое тэга:</p>
+	<pre><code class="language-html">{{{ $examples['bd-include'] }}}</code></pre>
+
+	<h3>bd-unwrap</h3>
+	<p>Используйте эту директиву для замены тэга его содержимым (может быть полезно использование совместно с bd-yield или bd-include):</p>
+	<pre><code class="language-html">{{{ $examples['bd-unwrap'] }}}</code></pre>
+
 	<div class="page-header">
 		<div id="extensions" class="fix-navbar-fixed"></div>
 		<h2>Расширения</h2>
@@ -72,7 +83,7 @@
 	<p>Примеры простых расширений:</p>
 	<pre><code class="language-php">{{{ $examples['extension-example'] }}}</code></pre>
 	<p>Первое расширение заменит каждый аттрибут <code>bd-my="$anything"</code> на <code>id="{{'{'.'{$anything}'.'}'}}"</code>.</p>
-	<p>Второе расширение обрамит тэг условием, значение аттрибута будет проигнорировано (но оно должно присутсвовать, например <code>bd-test="true"</code>).</p>
+	<p>Второе расширение обрамит тэг условием, значение аттрибута будет проигнорировано.</p>
 	<h4>Как создать свое расширение</h4>
 	<p><strong>Важно:</strong> не забудьте очистить скомпилированные шаблоны для внесения изменений.</p>
 	<p><code>BladeExtended::extend</code> принимает 2 параметра:</p>
@@ -93,6 +104,7 @@
 	<ul>
 		<li><code>insertContent($position, $insertString)</code> &mdash; вставка строки в определенную позицию</li>
 		<li><code>removeContent($from, $to)</code> &mdash; удаление подстроки с <code>$from</code> по <code>$to</code> позиции</li>
+		<li><code>replaceContent($from, $to, $string)</code> &mdash; замена подстроки с <code>$from</code> по <code>$to</code> позиции на <code>$string</code></li>
 		<li><code>replaceAttribute($attribute, $replacement, $start, $end)</code> &mdash; заменить аттрибут на <code>$replacement</code> в части шаблона с <code>$start</code> по <code>$end</code></li>
 		<li><code>deleteAttribute($attribute, $start, $end)</code> &mdash; удалить аттрибут в части шаблона с <code>$start</code> по <code>$end</code></li>
 		<li><code>wrapOuterContent($finded, $before, $after)</code> &mdash; обрамить тэг, используя <code>$before</code> и <code>$after</code></li>

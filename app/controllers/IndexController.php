@@ -1,5 +1,7 @@
 <?php
 
+use SleepingOwl\BladeExtended\BladeExtended;
+
 class IndexController extends \Controller
 {
 
@@ -12,6 +14,27 @@ class IndexController extends \Controller
 	{
 		$langLabel = $this->languages[$lang];
 		return View::make($lang . '.index', compact('lang', 'langLabel'))->with('examples', $this->codeExamples());
+	}
+
+	public function getDemo($lang = 'en')
+	{
+		$langLabel = $this->languages[$lang];
+		$demoSource = $this->codeExamples()['demo-source'];
+		return View::make($lang . '.demo', compact('lang', 'langLabel', 'demoSource'));
+	}
+
+	public function postDemo()
+	{
+		$source = Input::get('source');
+		$blade = BladeExtended::instance();
+		$blade->setContent($source);
+		try
+		{
+			return $blade->parse();
+		} catch (\Exception $e)
+		{
+			return 'Exception: ' . $e->getMessage();
+		}
 	}
 
 	protected function codeExamples()
