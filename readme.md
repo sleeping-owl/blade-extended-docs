@@ -1,6 +1,6 @@
 ## SleepingOwl BladeExtended Documentation
 
-This is documentation application for [SleepingOwl BladeExtended](http://sleeping-owl-blade-extended.gopagoda.com).
+This is documentation application for [SleepingOwl BladeExtended](http://sleepingowlbladeextended.cloudcontrolled.com).
 
 ### License
 
